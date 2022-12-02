@@ -6,6 +6,14 @@ public class Shield : MonoBehaviour
 {
     [SerializeField] Transform shieldPivot;
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
+
 
 
     // Update is called once per frame
