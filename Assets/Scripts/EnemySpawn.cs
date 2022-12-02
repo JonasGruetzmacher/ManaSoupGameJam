@@ -6,16 +6,18 @@ public class EnemySpawn : MonoBehaviour
 {
 
     [SerializeField] GameObject enemyPrefab;
+    [SerializeField] float minSpawnDistance;
+    [SerializeField] float spawnDistanceModifier;
+    [SerializeField] float spawnTime;
+    [SerializeField] float spawnDelay;
 
     Transform player;
-
-    private float minSpawnDistance = 25f;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameManager.Instance.player.transform;
-        InvokeRepeating("spawnEnemy", 1, 10);
+        InvokeRepeating(nameof(spawnEnemy), spawnTime, spawnDelay);
     }
 
     // Update is called once per frame
@@ -32,6 +34,6 @@ public class EnemySpawn : MonoBehaviour
 
     private Vector3 getSpawnSphere(Vector3 center)
     {
-        return center + Random.onUnitSphere * (minSpawnDistance + 15 * Random.value);
+        return center + Random.onUnitSphere * (minSpawnDistance + spawnDistanceModifier * Random.value);
     }
 }
