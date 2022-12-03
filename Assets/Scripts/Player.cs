@@ -22,9 +22,15 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             charges--;
+
             if(charges < 0)
             {
                 Debug.Log("Die");
+            }
+            else
+            {
+                GetComponent<PlayerLights>().changePlayerLights(charges);
+                spriteRenderer.sprite = playerSprites[charges];
             }
             Destroy(collision.gameObject);
         }
