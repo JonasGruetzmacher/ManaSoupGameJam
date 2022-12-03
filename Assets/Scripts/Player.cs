@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] float fireRate;
     [SerializeField] int charges = 4;
 
+    Animate animate;
     float timeSinceLastBeam = 0f;
     Vector3 movement;
 
@@ -22,6 +23,11 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    private void Awake()
+    {
+        animate = GetComponent<Animate>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +36,9 @@ public class Player : MonoBehaviour
         movement = movement.normalized;
         movement *= speed * Time.deltaTime;
         transform.position = transform.position + movement;
+
+        animate.horizontal = movement.x;
+        animate.vertical = movement.y;
 
         if (Input.GetMouseButton(0))
         {
