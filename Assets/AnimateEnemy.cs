@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Animate : MonoBehaviour
+public class AnimateEnemy : MonoBehaviour
 {
-    
-
     Animator animator;
 
     public float horizontal;
@@ -18,17 +16,7 @@ public class Animate : MonoBehaviour
 
     private void Update()
     {
+        horizontal = GameManager.Instance.player.transform.position.x - transform.position.x;
         animator.SetFloat("Horizontal", horizontal);
-
-        if (horizontal == 0 && vertical == 0) 
-        {
-            animator.SetBool("Moving", false);
-            GetComponent<AudioSource>().mute = true;
-        } else
-        {
-            animator.SetBool("Moving", true);
-            GetComponent<AudioSource>().mute = false;
-        }
-
     }
 }

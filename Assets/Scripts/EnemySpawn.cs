@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawn : MonoBehaviour
 {
 
-    [SerializeField] GameObject enemyPrefab;
+    [SerializeField] GameObject[] enemyPrefab;
     [SerializeField] float minSpawnDistance;
     [SerializeField] float spawnDistanceModifier;
     [SerializeField] float spawnTime;
@@ -64,12 +64,12 @@ public class EnemySpawn : MonoBehaviour
     private void spawnEnemy()
     {
         Vector3 spawnLocation = getSpawnSphere(player.position);
-        Instantiate(enemyPrefab, spawnLocation, Quaternion.identity, enemyParent.transform);
+        Instantiate(enemyPrefab[Random.Range(0,enemyPrefab.Length)], spawnLocation, Quaternion.identity, enemyParent.transform);
     }
 
     private void spawnEnemyAtLocation(Vector3 spawnLocation)
     {
-        Instantiate(enemyPrefab, spawnLocation, Quaternion.identity, enemyParent.transform);
+        Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], spawnLocation, Quaternion.identity, enemyParent.transform);
     }
 
     private Vector3 getSpawnSphere(Vector3 center)

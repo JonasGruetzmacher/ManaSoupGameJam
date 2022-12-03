@@ -61,7 +61,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93b30679e7106c4c94ab5c0d522a6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6875779113043762406, guid: 1fb9f425b8bb62849864ef6a80852180, type: 3}
+  enemyPrefab:
+  - {fileID: 6875779113043762406, guid: 8afbcaae7360b2746a0f50fc05c05052, type: 3}
+  - {fileID: 6875779113043762406, guid: a755076bede47d2429421e60d4762abb, type: 3}
+  - {fileID: 6875779113043762406, guid: 1fb9f425b8bb62849864ef6a80852180, type: 3}
   minSpawnDistance: 25
   spawnDistanceModifier: 10
   spawnTime: 0
@@ -96,7 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae4cfec0945fc3f4da02963ee19e14a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 3979519374131480710, guid: 58132cbe12b81b84598ed506a5e45c9b, type: 3}
+  itemPrefab:
+  - {fileID: 3979519374131480710, guid: 58132cbe12b81b84598ed506a5e45c9b, type: 3}
+  - {fileID: 3979519374131480710, guid: bb65313ecadc0514e86196eeacb4e353, type: 3}
+  - {fileID: 3979519374131480710, guid: ef5ce7b88a5f4d043b68ae899aad563b, type: 3}
   spawnTime: 5
   spawnDelay: 0
   items: {fileID: 0}

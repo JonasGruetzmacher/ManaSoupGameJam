@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemSpawn : MonoBehaviour
 {
 
-    [SerializeField] GameObject itemPrefab;
+    [SerializeField] GameObject[] itemPrefab;
     [SerializeField] float spawnTime;
     [SerializeField] float spawnDelay;
     [SerializeField] Transform items;
@@ -34,7 +34,7 @@ public class ItemSpawn : MonoBehaviour
         Vector3 pos = GameManager.Instance.player.transform.position;
         pos.x += Random.Range(-10,10);
         pos.y += Random.Range(-10, 10);
-        Instantiate(itemPrefab, pos, Quaternion.identity, items);
+        Instantiate(itemPrefab[Random.Range(0,itemPrefab.Length)], pos, Quaternion.identity, items);
 
     }
 }
