@@ -1982,7 +1982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beam: {fileID: 4253903080019332328}
-  speed: 15
+  speed: 7
   fireRate: 1
   charges: 4
   shield: {fileID: 2928781037147460446}
