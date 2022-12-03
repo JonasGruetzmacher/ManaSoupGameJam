@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Shield : MonoBehaviour
 {
     [SerializeField] Transform shieldPivot;
     [SerializeField] float rechargeSpeed;
     [SerializeField] float charge = 100;
+    [SerializeField] Light2D shieldLight;
 
     public bool powered = true;
 
@@ -45,10 +47,12 @@ public class Shield : MonoBehaviour
 
         if (charge <= 0)
         {
+            shieldLight.enabled = false;
             powered = false;
             renderer.enabled = false;
         } else
         {
+            shieldLight.enabled = true;
             powered = true;
             renderer.enabled = true;
         }
@@ -56,5 +60,6 @@ public class Shield : MonoBehaviour
         var col = renderer.material.color;
         col.a = charge / 100f;
         renderer.material.color = col;
+        
     }
 }
