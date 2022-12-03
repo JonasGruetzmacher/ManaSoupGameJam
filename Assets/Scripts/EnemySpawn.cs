@@ -11,6 +11,8 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] float spawnTime;
     [SerializeField] float spawnDelay;
 
+    [SerializeField] GameObject enemyParent;
+
     Transform player;
 
     // Start is called before the first frame update
@@ -29,7 +31,7 @@ public class EnemySpawn : MonoBehaviour
     private void spawnEnemy()
     {
         Vector3 spawnLocation = getSpawnSphere(player.position);
-        Instantiate(enemyPrefab, spawnLocation, Quaternion.identity);
+        Instantiate(enemyPrefab, spawnLocation, Quaternion.identity, enemyParent.transform);
     }
 
     private Vector3 getSpawnSphere(Vector3 center)

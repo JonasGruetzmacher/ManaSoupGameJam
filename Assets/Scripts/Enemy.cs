@@ -17,12 +17,12 @@ public class Enemy : MonoBehaviour
         player = GameManager.Instance.player.transform;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.tag == "Beam")
         {
             ScoreManager.Instance.AddScore(points);
-            Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
     }
 
