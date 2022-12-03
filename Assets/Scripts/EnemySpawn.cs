@@ -39,7 +39,8 @@ public class EnemySpawn : MonoBehaviour
             if (rand > 0.41f && rand < 0.9f)
             {
                 spawnEnemy();
-            } else if (rand > 0.91f)
+            }
+            else if (rand > 0.91f)
             {
                 spawnBatch();
             }
@@ -91,19 +92,6 @@ public class EnemySpawn : MonoBehaviour
         {
             float spawnDistanceSqr = (p - spawnLocation).sqrMagnitude;
             if ( spawnDistanceSqr <= minDistanceGroupSpawnSqr || spawnDistanceSqr >= maxDistanceGroupSpawnSqr)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private bool isSpawnTooFar(Vector3 spawnLocation, List<Vector3> usedPositions, float maxDistanceGroupSpawnSqr)
-    {
-        foreach (var p in usedPositions)
-        {
-            if ((p - spawnLocation).sqrMagnitude >= maxDistanceGroupSpawnSqr)
             {
                 return true;
             }

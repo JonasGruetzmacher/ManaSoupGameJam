@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4869577675061256233}
   - component: {fileID: 2099347146}
   - component: {fileID: 2099347147}
+  - component: {fileID: 1605566856}
+  - component: {fileID: 5503380444604380153}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -59,7 +61,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6875779113043762406, guid: 1fb9f425b8bb62849864ef6a80852180, type: 3}
-  minSpawnDistance: 20
+  minSpawnDistance: 25
   spawnDistanceModifier: 10
   spawnTime: 0
   spawnDelay: 3
+  minDistanceGroupSpawn: 2
+  maxDistanceGroupSpawn: 8
+  batchSize: 3
+  enemyParent: {fileID: 0}
+--- !u!114 &1605566856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4869577675061256234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21ca40cfdf1e7b438602a539f181c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  score: 0
+--- !u!114 &5503380444604380153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4869577675061256234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21ca40cfdf1e7b438602a539f181c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  score: 0
