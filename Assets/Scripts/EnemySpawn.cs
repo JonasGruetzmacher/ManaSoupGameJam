@@ -19,6 +19,9 @@ public class EnemySpawn : MonoBehaviour
     Transform player;
     float score;
     float timeSinceLastSpawn = 0f;
+    float spawnDecrease = 0f;
+    float scoreToNextStage = 500f;
+    float scoreSinceLastStageIncrease = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +49,16 @@ public class EnemySpawn : MonoBehaviour
             }
             timeSinceLastSpawn = 0f;
         }
+
+/*
+        scoreSinceLastStageIncrease += score;
+        if (scoreSinceLastStageIncrease > scoreToNextStage)
+        {
+            spawnDelay -= 0.1f;
+            scoreSinceLastStageIncrease = 0f;
+        }
+*/
+
     }
 
     private void spawnEnemy()
