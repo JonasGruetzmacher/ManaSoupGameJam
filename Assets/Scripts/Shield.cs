@@ -7,7 +7,7 @@ public class Shield : MonoBehaviour
 {
     [SerializeField] Transform shieldPivot;
     [SerializeField] float rechargeSpeed;
-    [SerializeField] float charge = 100;
+    public float charge = 100;
     [SerializeField] Light2D shieldLight;
 
     public bool powered = true;

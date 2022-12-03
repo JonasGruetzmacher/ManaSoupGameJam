@@ -9,6 +9,7 @@ public class PickUp : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             GameManager.Instance.player.GetComponent<Player>().AddCharge();
+            AudioManager.Instance.PlayAudio((int)Audio.PickUp);
             Destroy(gameObject);
 
         }   

@@ -8,6 +8,10 @@ public class Player : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float fireRate;
     [SerializeField] int charges = 4;
+    [SerializeField] Shield shield;
+
+    [SerializeField] Sprite[] playerSprites;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
     Animate animate;
     float timeSinceLastBeam = 0f;
@@ -51,19 +55,28 @@ public class Player : MonoBehaviour
 
     private void fireBeam()
     {
-        if (timeSinceLastBeam > fireRate)
+        if (timeSinceLastBeam > fireRate && charges > 0)
         {
+            AudioManager.Instance.PlayAudio((int)Audio.Beam);
             charges--;
             GetComponent<PlayerLights>().changePlayerLights(charges);
             beam.SetActive(true);
             timeSinceLastBeam = 0f;
+            spriteRenderer.sprite = playerSprites[charges];
         }
     }
 
     public void AddCharge()
     {
-        charges++;
+        if (charges < 4)
+        {
+            
+            charges++;
+            spriteRenderer.sprite = playerSprites[charges];
+        }
+
         GetComponent<PlayerLights>().changePlayerLights(charges);
+        shield.charge += 20;
     }
 
 }

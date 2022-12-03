@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2099347146}
   - component: {fileID: 2099347147}
   - component: {fileID: 1605566856}
-  - component: {fileID: 5503380444604380153}
+  - component: {fileID: 8269279775968928068}
+  - component: {fileID: 1605566861}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -83,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   score: 0
---- !u!114 &5503380444604380153
+--- !u!114 &8269279775968928068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,8 +93,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 4869577675061256234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21ca40cfdf1e7b438602a539f181c84, type: 3}
+  m_Script: {fileID: 11500000, guid: ae4cfec0945fc3f4da02963ee19e14a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  score: 0
+  itemPrefab: {fileID: 3979519374131480710, guid: 58132cbe12b81b84598ed506a5e45c9b, type: 3}
+  spawnTime: 5
+  spawnDelay: 0
+  items: {fileID: 0}
+--- !u!114 &1605566861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4869577675061256234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b73acdbd8fcdd4c80cd0d75b5d3f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 0}
+  audioSourcePrefab: {fileID: 828817528596501105, guid: e5160b7d6ea4fa449add12305f4960c3, type: 3}
+  audioClips:
+  - {fileID: 8300000, guid: d8cf235d4d0765c42bb90b157c6ec711, type: 3}
+  - {fileID: 8300000, guid: caca5f9210708f34b9954d1e49021093, type: 3}
+  - {fileID: 8300000, guid: 2b38ee14dca71a04183b07585d091ec9, type: 3}
+  numberOfAudioClips: 020000000200000003000000
+  sfxVolume: 1
+  musicVolume: 1

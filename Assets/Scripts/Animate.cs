@@ -21,9 +21,11 @@ public class Animate : MonoBehaviour
         if (horizontal == 0 && vertical == 0) 
         {
             animator.SetBool("Moving", false);
+            GetComponent<AudioSource>().mute = true;
         } else
         {
             animator.SetBool("Moving", true);
+            GetComponent<AudioSource>().mute = false;
         }
 
     }

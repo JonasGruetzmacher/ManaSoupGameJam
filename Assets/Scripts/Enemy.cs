@@ -31,4 +31,9 @@ public class Enemy : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
     }
+
+    private void OnDestroy()
+    {
+        AudioManager.Instance.PlayAudio((int)Audio.GhostDie);
+    }
 }

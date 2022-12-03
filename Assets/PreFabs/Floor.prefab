@@ -472,6 +472,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloorTile
       objectReference: {fileID: 0}
+    - target: {fileID: 9070305090930070392, guid: 85534538be8071447ae933612b94867f, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85534538be8071447ae933612b94867f, type: 3}
 --- !u!4 &349984920408280657 stripped
