@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 8560569552533350081}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -462,6 +462,7 @@ MonoBehaviour:
   beam: {fileID: 4253903080019332328}
   speed: 15
   fireRate: 1
+  charges: 4
 --- !u!61 &8694729349990033830
 BoxCollider2D:
   m_ObjectHideFlags: 0

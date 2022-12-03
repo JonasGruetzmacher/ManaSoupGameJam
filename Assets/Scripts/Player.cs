@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject beam;
     [SerializeField] float speed;
     [SerializeField] float fireRate;
+    [SerializeField] int charges = 4;
 
     float timeSinceLastBeam = 0f;
     Vector3 movement;
@@ -20,13 +21,6 @@ public class Player : MonoBehaviour
 
         }
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
 
     // Update is called once per frame
     void Update()
@@ -50,8 +44,15 @@ public class Player : MonoBehaviour
     {
         if (timeSinceLastBeam > fireRate)
         {
+            charges--;
             beam.SetActive(true);
             timeSinceLastBeam = 0f;
         }
     }
+
+    public void AddCharge()
+    {
+        charges++;
+    }
+
 }
