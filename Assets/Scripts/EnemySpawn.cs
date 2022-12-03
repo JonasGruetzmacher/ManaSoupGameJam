@@ -10,10 +10,15 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] float spawnDistanceModifier;
     [SerializeField] float spawnTime;
     [SerializeField] float spawnDelay;
+    [SerializeField] float minDistanceGroupSpawn;
+    [SerializeField] float maxDistanceGroupSpawn;
+    [SerializeField] int batchSize;
 
     [SerializeField] GameObject enemyParent;
 
     Transform player;
+    float score;
+    float timeSinceLastSpawn = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +30,21 @@ public class EnemySpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        score = ScoreManager.Instance.score;
+        float rand = Random.value;
+        timeSinceLastSpawn += Time.deltaTime;
+
+        if (timeSinceLastSpawn > spawnDelay)
+        {
+            if (rand > 0.41f && rand < 0.9f)
+            {
+                spawnEnemy();
+            } else if (rand > 0.91f)
+            {
+                spawnBatch();
+            }
+            timeSinceLastSpawn = 0f;
+        }
     }
 
     private void spawnEnemy()
@@ -34,8 +53,62 @@ public class EnemySpawn : MonoBehaviour
         Instantiate(enemyPrefab, spawnLocation, Quaternion.identity, enemyParent.transform);
     }
 
+    private void spawnEnemyAtLocation(Vector3 spawnLocation)
+    {
+        Instantiate(enemyPrefab, spawnLocation, Quaternion.identity, enemyParent.transform);
+    }
+
     private Vector3 getSpawnSphere(Vector3 center)
     {
         return center + Random.onUnitSphere * (minSpawnDistance + spawnDistanceModifier * Random.value);
+    }
+
+    private void spawnBatch()
+    {
+        List<Vector3> usedPositions = new List<Vector3>(batchSize);
+        float minDistanceGroupSpawnSqr = minDistanceGroupSpawn * minDistanceGroupSpawn;
+        float maxDistanceGroupSpawnSqr = maxDistanceGroupSpawn * maxDistanceGroupSpawn;
+
+        for (int i = 0; i < batchSize; i++)
+        {
+            Vector3 spawnLocation = Vector3.zero;
+
+            do
+            {
+                spawnLocation = getSpawnSphere(player.position);
+            }
+            while (isSpawnOutOfRange(spawnLocation, usedPositions, minDistanceGroupSpawnSqr, maxDistanceGroupSpawnSqr));
+
+            spawnEnemyAtLocation(spawnLocation);
+            usedPositions.Add(spawnLocation);
+        }
+        
+    }
+
+    private bool isSpawnOutOfRange(Vector3 spawnLocation, List<Vector3> usedPositions, float minDistanceGroupSpawnSqr, float maxDistanceGroupSpawnSqr)
+    {
+        foreach (var p in usedPositions)
+        {
+            float spawnDistanceSqr = (p - spawnLocation).sqrMagnitude;
+            if ( spawnDistanceSqr <= minDistanceGroupSpawnSqr || spawnDistanceSqr >= maxDistanceGroupSpawnSqr)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool isSpawnTooFar(Vector3 spawnLocation, List<Vector3> usedPositions, float maxDistanceGroupSpawnSqr)
+    {
+        foreach (var p in usedPositions)
+        {
+            if ((p - spawnLocation).sqrMagnitude >= maxDistanceGroupSpawnSqr)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
