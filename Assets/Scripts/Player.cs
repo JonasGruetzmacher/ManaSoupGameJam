@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    [SerializeField] GameObject beam;
     [SerializeField] float speed;
+    [SerializeField] float fireRate;
 
+    float timeSinceLastBeam = 0f;
     Vector3 movement;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -22,7 +24,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
 
@@ -35,6 +37,21 @@ public class Player : MonoBehaviour
         movement *= speed * Time.deltaTime;
         transform.position = transform.position + movement;
 
+        if (Input.GetMouseButton(0))
+        {
+            fireBeam();
+        } else 
+        { 
+            timeSinceLastBeam += Time.deltaTime;
+        }
+    }
 
+    private void fireBeam()
+    {
+        if (timeSinceLastBeam > fireRate)
+        {
+            beam.SetActive(true);
+            timeSinceLastBeam = 0f;
+        }
     }
 }

@@ -17,6 +17,15 @@ public class Enemy : MonoBehaviour
         player = GameManager.Instance.player.transform;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Beam")
+        {
+            ScoreManager.Instance.AddScore(points);
+            Destroy(collision.gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
