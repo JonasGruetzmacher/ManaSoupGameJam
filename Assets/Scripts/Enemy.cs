@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] float speed;
 
+    public int points;
     Transform player;
 
 

@@ -10,7 +10,9 @@ public class Shield : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            ScoreManager.Instance.AddScore(collision.gameObject.GetComponent<Enemy>().points);
             Destroy(collision.gameObject);
+            
         }
     }
 
