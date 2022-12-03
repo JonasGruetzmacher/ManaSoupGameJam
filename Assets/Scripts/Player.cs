@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
         if (timeSinceLastBeam > fireRate)
         {
             charges--;
+            GetComponent<PlayerLights>().changePlayerLights(charges);
             beam.SetActive(true);
             timeSinceLastBeam = 0f;
         }
@@ -62,6 +63,7 @@ public class Player : MonoBehaviour
     public void AddCharge()
     {
         charges++;
+        GetComponent<PlayerLights>().changePlayerLights(charges);
     }
 
 }
