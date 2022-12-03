@@ -310,6 +310,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  particlePrefab:
+  - {fileID: 2654891439885070229, guid: 3a7a5fe5fdb94624cabb4efba7f23d7b, type: 3}
+  - {fileID: 8542596065795174976, guid: ed93505b1e355a9448ffc0825964c65a, type: 3}
   points: 100
 --- !u!70 &-837982496263264273
 CapsuleCollider2D:

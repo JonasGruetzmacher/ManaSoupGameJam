@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    [SerializeField] ParticleSystem particlePrefab;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -13,5 +14,10 @@ public class PickUp : MonoBehaviour
             Destroy(gameObject);
 
         }   
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(particlePrefab, transform.position, Quaternion.identity);
     }
 }

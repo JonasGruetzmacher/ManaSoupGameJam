@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e16a3cf7c1174441beb6605eedb61d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 8542596065795174976, guid: ed93505b1e355a9448ffc0825964c65a, type: 3}
 --- !u!70 &3979519374131480705
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

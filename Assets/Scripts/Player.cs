@@ -21,9 +21,12 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            charges--;
+            if(charges < 0)
+            {
+                Debug.Log("Die");
+            }
             Destroy(collision.gameObject);
-            Debug.Log("DIE!!");
-
         }
     }
 

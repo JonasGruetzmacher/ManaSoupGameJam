@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField] float speed;
+    [SerializeField] ParticleSystem[] particlePrefab;
 
     public int points;
     Transform player;
@@ -34,6 +35,10 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     {
+        foreach (var p in particlePrefab)
+        {
+            Instantiate(p, transform.position, Quaternion.identity);
+        }
         AudioManager.Instance.PlayAudio((int)Audio.GhostDie);
     }
 }
