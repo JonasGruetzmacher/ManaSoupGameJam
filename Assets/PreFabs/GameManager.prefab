@@ -48,7 +48,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cd999b3199d7647a0da34dc85f1d0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorial: {fileID: 0}
+  enemies: {fileID: 0}
+  pickUps: {fileID: 0}
+  uiMenu: {fileID: 0}
+  uiInGame: {fileID: 0}
+  uiGameOver: {fileID: 0}
   player: {fileID: 0}
+  _state: 0
 --- !u!114 &2099347147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +110,7 @@ MonoBehaviour:
   - {fileID: 3979519374131480710, guid: 58132cbe12b81b84598ed506a5e45c9b, type: 3}
   - {fileID: 3979519374131480710, guid: bb65313ecadc0514e86196eeacb4e353, type: 3}
   - {fileID: 3979519374131480710, guid: ef5ce7b88a5f4d043b68ae899aad563b, type: 3}
-  spawnTime: 5
+  spawnTime: 8
   spawnDelay: 0
   items: {fileID: 0}
 --- !u!114 &1605566861
@@ -119,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 0}
+  music: {fileID: 0}
   audioSourcePrefab: {fileID: 828817528596501105, guid: e5160b7d6ea4fa449add12305f4960c3, type: 3}
   audioClips:
   - {fileID: 8300000, guid: d8cf235d4d0765c42bb90b157c6ec711, type: 3}

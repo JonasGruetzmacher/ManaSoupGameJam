@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     float timeSinceLastBeam = 0f;
     Vector3 movement;
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
 
             if(charges < 0)
             {
+                GameManager.Instance.GameOver();
                 Debug.Log("Die");
             }
             else
@@ -64,7 +66,7 @@ public class Player : MonoBehaviour
 
     private void fireBeam()
     {
-        if (timeSinceLastBeam > fireRate && charges > 0)
+        if (timeSinceLastBeam > fireRate && charges > 0 && GameManager.Instance._state == State.INGAME)
         {
             AudioManager.Instance.PlayAudio((int)Audio.Beam);
             charges--;
@@ -79,13 +81,21 @@ public class Player : MonoBehaviour
     {
         if (charges < 4)
         {
-            
             charges++;
             spriteRenderer.sprite = playerSprites[charges];
         }
 
         GetComponent<PlayerLights>().changePlayerLights(charges);
         shield.charge += 20;
+    }
+
+    public void ResetPlayer()
+    {
+        charges = 4;
+        shield.charge = 100;
+        spriteRenderer.sprite = playerSprites[charges];
+        timeSinceLastBeam = 0f;
+        GetComponent<PlayerLights>().changePlayerLights(charges);
     }
 
 }

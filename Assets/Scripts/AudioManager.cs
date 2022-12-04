@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] Slider volumeSlider;
 
+    [SerializeField] AudioSource music;
+
     [SerializeField] AudioSource audioSourcePrefab;
 
     [SerializeField] AudioClip[] audioClips;
@@ -24,6 +26,7 @@ public class AudioManager : MonoBehaviour
     {
         sfxVolume = volumeSlider.value;
         musicVolume = volumeSlider.value;
+        music.volume = musicVolume;
     }
 
     void InitSFX()

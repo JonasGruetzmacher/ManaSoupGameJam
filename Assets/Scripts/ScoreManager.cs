@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
 
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI scoreText2;
 
     public static ScoreManager Instance;
 
@@ -22,6 +23,7 @@ public class ScoreManager : MonoBehaviour
     {
         score += 20 * Time.deltaTime;
         scoreText.text = ((int)score).ToString();
+        scoreText2.text = ((int)score).ToString();
     }
 
     public void ResetScore()
