@@ -40,6 +40,10 @@ public class Enemy : MonoBehaviour
             EnemySpawn.increaseSpeed = false;
         }
         */
+        if (GameManager.Instance._state == State.GAMEOVER)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnDestroy()

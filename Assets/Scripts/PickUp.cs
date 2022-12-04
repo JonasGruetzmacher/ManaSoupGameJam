@@ -16,6 +16,14 @@ public class PickUp : MonoBehaviour
         }   
     }
 
+    private void Update()
+    {
+        if (GameManager.Instance._state == State.GAMEOVER)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void OnDestroy()
     {
         Instantiate(particlePrefab, transform.position, Quaternion.identity);
