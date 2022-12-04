@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
+  scoreText2: {fileID: 0}
   score: 0
 --- !u!114 &8269279775968928068
 MonoBehaviour:

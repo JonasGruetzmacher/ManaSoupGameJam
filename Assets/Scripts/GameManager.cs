@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
                 break;
             case State.GAMEOVER:
                 _state = State.GAMEOVER;
-                uiInGame.SetActive(true);
+                uiInGame.SetActive(false);
                 uiMenu.SetActive(false);
                 uiGameOver.SetActive(true);
                 Time.timeScale = 0;
