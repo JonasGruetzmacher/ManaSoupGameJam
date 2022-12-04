@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField] float speed;
+    [SerializeField] float speedIncrease;
     [SerializeField] ParticleSystem[] particlePrefab;
 
     public int points;
@@ -31,6 +32,12 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
+
+        if (EnemySpawn.increaseSpeed)
+        {
+            speed += speedIncrease;
+            EnemySpawn.increaseSpeed = false;
+        }
     }
 
     private void OnDestroy()

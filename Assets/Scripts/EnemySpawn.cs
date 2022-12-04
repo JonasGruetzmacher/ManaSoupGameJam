@@ -10,8 +10,15 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] float spawnDistanceModifier;
     [SerializeField] float spawnTime;
     [SerializeField] float spawnDelay;
+    [SerializeField] float minSpawnDelay;
     [SerializeField] float minDistanceGroupSpawn;
     [SerializeField] float maxDistanceGroupSpawn;
+    [SerializeField] float scoreToNextSpawnStage;
+    [SerializeField] float scoreToNextSpeedStage;
+    [SerializeField] float spawnDecrease;
+    [SerializeField] float breakpointOneExtraSpawn;
+    [SerializeField] float breakpointBatchSpawn;
+    [SerializeField] float breakpointDecrease;
     [SerializeField] int batchSize;
 
     [SerializeField] GameObject enemyParent;
@@ -19,15 +26,16 @@ public class EnemySpawn : MonoBehaviour
     Transform player;
     float score;
     float timeSinceLastSpawn = 0f;
-    float spawnDecrease = 0f;
-    float scoreToNextStage = 500f;
-    float scoreSinceLastStageIncrease = 0f;
+    float nextSpawnStageBreakpoint = 0f;
+    float nextSpeedStageBreakpoint = 0f;
+    public static bool increaseSpeed = false;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameManager.Instance.player.transform;
         InvokeRepeating(nameof(spawnEnemy), spawnTime, spawnDelay);
+        nextSpawnStageBreakpoint = scoreToNextSpawnStage;
     }
 
     // Update is called once per frame
@@ -39,25 +47,29 @@ public class EnemySpawn : MonoBehaviour
 
         if (timeSinceLastSpawn > spawnDelay)
         {
-            if (rand > 0.41f && rand < 0.9f)
+            if (rand >= breakpointOneExtraSpawn-breakpointDecrease && rand < breakpointBatchSpawn-breakpointDecrease)
             {
                 spawnEnemy();
             }
-            else if (rand > 0.91f)
+            else if (rand >= breakpointBatchSpawn-breakpointDecrease)
             {
                 spawnBatch();
             }
             timeSinceLastSpawn = 0f;
         }
 
-/*
-        scoreSinceLastStageIncrease += score;
-        if (scoreSinceLastStageIncrease > scoreToNextStage)
+        if (score > nextSpawnStageBreakpoint)
         {
-            spawnDelay -= 0.1f;
-            scoreSinceLastStageIncrease = 0f;
+            spawnDelay -= spawnDelay > minSpawnDelay ? spawnDecrease : 0f;
+            nextSpawnStageBreakpoint += scoreToNextSpawnStage;
+            nextSpeedStageBreakpoint = nextSpawnStageBreakpoint + scoreToNextSpeedStage;
         }
-*/
+
+        if(spawnDelay <= minSpawnDelay && score > nextSpeedStageBreakpoint)
+        {
+            increaseSpeed = true;
+            nextSpawnStageBreakpoint = scoreToNextSpeedStage;
+        }
 
     }
 

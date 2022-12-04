@@ -76,8 +76,15 @@ MonoBehaviour:
   spawnDistanceModifier: 10
   spawnTime: 0
   spawnDelay: 3
+  minSpawnDelay: 0.5
   minDistanceGroupSpawn: 2
   maxDistanceGroupSpawn: 8
+  scoreToNextSpawnStage: 500
+  scoreToNextSpeedStage: 1000
+  spawnDecrease: 0.2
+  breakpointOneExtraSpawn: 0.4
+  breakpointBatchSpawn: 0.9
+  breakpointDecrease: 0.05
   batchSize: 3
   enemyParent: {fileID: 0}
 --- !u!114 &1605566856
