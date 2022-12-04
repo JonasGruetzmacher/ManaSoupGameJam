@@ -65,11 +65,13 @@ public class EnemySpawn : MonoBehaviour
             nextSpeedStageBreakpoint = nextSpawnStageBreakpoint + scoreToNextSpeedStage;
         }
 
+        /*
         if(spawnDelay <= minSpawnDelay && score > nextSpeedStageBreakpoint)
         {
             increaseSpeed = true;
             nextSpawnStageBreakpoint = scoreToNextSpeedStage;
         }
+        */
 
     }
 

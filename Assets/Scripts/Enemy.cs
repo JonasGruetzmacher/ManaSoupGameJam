@@ -33,11 +33,13 @@ public class Enemy : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed);
 
+        /*
         if (EnemySpawn.increaseSpeed)
         {
             speed += speedIncrease;
             EnemySpawn.increaseSpeed = false;
         }
+        */
     }
 
     private void OnDestroy()
