@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         player.GetComponent<Player>().ResetPlayer();
+        ScoreManager.Instance.ResetScore();
         SwitchState(State.INGAME);
         StartCoroutine(tutorial.ShowTutorial());
 
